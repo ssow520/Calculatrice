@@ -5,52 +5,9 @@
              BackgroundColor="#000000">
 
     <Grid Padding="10" RowSpacing="6" ColumnSpacing="10">
-        <!--la zone d'affichage du résultat-->
-        <Label x:Name="Affichaage"
-               Text="0" 
-               TextColor="White" 
-               FontSize="48" 
-               HorizontalTextAlignment="End" 
-               VerticalTextAlignment="Center" 
-               Grid.Row="0" 
-               Grid.ColumnSpan="4" 
-               HeightRequest="100"
-               LineBreakMode="NoWrap"
-               MaxLines="1"/>
-
-        <!--la première ligne-->
-        <Button Text="AC" Clicked="OnClearButton_Clicked" BackgroundColor="#A5A5A5" TextColor="Black" CornerRadius="32" FontSize="20" Grid.Row="1" Grid.Column="0" BorderWidth="10"/>
-        <Button Text="1/×" Clicked="OnInverseButton_Clicked" BackgroundColor="#A5A5A5" TextColor="Black" CornerRadius="32" FontSize="20" Grid.Row="1" Grid.Column="1" BorderWidth="10"/>
-        <Button Text="%" Clicked="OnPercentButton_Clicked" BackgroundColor="#A5A5A5" TextColor="Black" CornerRadius="32" FontSize="28" Grid.Row="1" Grid.Column="2" BorderWidth="10"/>
-        <Button Text="÷" Clicked="OnDivideButton_Clicked" BackgroundColor="#FF9F0A" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="1" Grid.Column="3" BorderWidth="10"/>
-        
-        <!--la deuxième ligne-->
-        <Button Text="7" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="2" Grid.Column="0" BorderWidth="10"/>
-        <Button Text="8" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="2" Grid.Column="1" BorderWidth="10"/>
-        <Button Text="9" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="2" Grid.Column="2" BorderWidth="10"/>
-        <Button Text="×" Clicked="OnMultiplyButton_Clicked" BackgroundColor="#FF9F0A" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="2" Grid.Column="3" BorderWidth="10"/>
-
-        <!--la troisième ligne-->
-        <Button Text="4" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="3" Grid.Column="0" BorderWidth="10"/>
-        <Button Text="5" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="3" Grid.Column="1" BorderWidth="10"/>
-        <Button Text="6" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="3" Grid.Column="2" BorderWidth="10"/>
-        <Button Text="−" Clicked="OnMinusButton_Clicked" BackgroundColor="#FF9F0A" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="3" Grid.Column="3" BorderWidth="10"/>
-
-        <!--la quatrième ligne-->
-        <Button Text="1" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="4" Grid.Column="0" BorderWidth="10"/>
-        <Button Text="2" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="4" Grid.Column="1" BorderWidth="10"/>
-        <Button Text="3" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="4" Grid.Column="2" BorderWidth="10"/>
-        <Button Text="+" Clicked="OnPlusButton_Clicked" BackgroundColor="#FF9F0A" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="4" Grid.Column="3" BorderWidth="10"/>
-
-        <!-- Ligne 5 -->
-        <Button Text="±" Clicked="OnPlusMinusButton_Clicked" BackgroundColor="#A5A5A5" TextColor="Black" CornerRadius="32" FontSize="28" Grid.Row="5" Grid.Column="0" BorderWidth="10"/>
-        <Button Text="0" Clicked="OnNumberButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="5" Grid.Column="1" BorderWidth="10"/>
-        <Button Text="." Clicked="OnDecimalButton_Clicked" BackgroundColor="#333333" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="5" Grid.Column="2" BorderWidth="10"/>
-        <Button Text="=" Clicked="OnEqualsButton_Clicked" BackgroundColor="#FF9F0A" TextColor="White" CornerRadius="32" FontSize="28" Grid.Row="5" Grid.Column="3" BorderWidth="10"/>
-        
-        <!--Définitions des lignes et colonnes-->
+        <!--Définition des lignes-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="120"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -63,6 +20,112 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <!-- Zone d'affichage avec opération en cours et résultat -->
+        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="4" 
+                            Padding="20,10" Spacing="5">
+            <!-- Opération en cours -->
+            <Label x:Name="OperationLabel" Text="" 
+                   TextColor="#666666" FontSize="20"
+                   HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+
+            <!-- Résultat principal -->
+            <Label x:Name="Affichage" Text="0" 
+                   TextColor="White" FontSize="48"
+                   FontAttributes="Bold" HorizontalTextAlignment="End" 
+                   VerticalTextAlignment="Center"/>
+        </VerticalStackLayout>
+
+        <!--la première ligne-->
+        <Button Text="AC" Clicked="OnClearButton_Clicked"
+                BackgroundColor="#A5A5A5" TextColor="Black"
+                CornerRadius="32" FontSize="20" 
+                Grid.Row="1" Grid.Column="0"/>
+        <Button Text="1/×" Clicked="OnInverseButton_Clicked"
+                BackgroundColor="#A5A5A5" TextColor="Black" 
+                CornerRadius="32" FontSize="20" 
+                Grid.Row="1" Grid.Column="1"/>
+        <Button Text="%" Clicked="OnPercentButton_Clicked" 
+                BackgroundColor="#A5A5A5" TextColor="Black" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="1" Grid.Column="2"/>
+        <Button Text="÷" Clicked="OnDivideButton_Clicked" 
+                BackgroundColor="#FF9F0A" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="1" Grid.Column="3"/>
+        
+        <!--la deuxième ligne-->
+        <Button Text="7" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="2" Grid.Column="0"/>
+        <Button Text="8" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="2" Grid.Column="1"/>
+        <Button Text="9" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="2" Grid.Column="2"/>
+        <Button Text="×" Clicked="OnMultiplyButton_Clicked" 
+                BackgroundColor="#FF9F0A" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="2" Grid.Column="3"/>
+
+        <!--la troisième ligne-->
+        <Button Text="4" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="3" Grid.Column="0"/>
+        <Button Text="5" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="3" Grid.Column="1"/>
+        <Button Text="6" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="3" Grid.Column="2"/>
+        <Button Text="−" Clicked="OnMinusButton_Clicked" 
+                BackgroundColor="#FF9F0A" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="3" Grid.Column="3"/>
+
+        <!--la quatrième ligne-->
+        <Button Text="1" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="4" Grid.Column="0"/>
+        <Button Text="2" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="4" Grid.Column="1"/>
+        <Button Text="3" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="4" Grid.Column="2"/>
+        <Button Text="+" Clicked="OnPlusButton_Clicked" 
+                BackgroundColor="#FF9F0A" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="4" Grid.Column="3"/>
+
+        <!-- la ciquième ligne -->
+        <Button Text="±" Clicked="OnPlusMinusButton_Clicked" 
+                BackgroundColor="#A5A5A5" TextColor="Black" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="5" Grid.Column="0"/>
+        <Button Text="0" Clicked="OnNumberButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="5" Grid.Column="1"/>
+        <Button Text="." Clicked="OnDecimalButton_Clicked" 
+                BackgroundColor="#333333" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="5" Grid.Column="2"/>
+        <Button Text="=" Clicked="OnEqualsButton_Clicked" 
+                BackgroundColor="#FF9F0A" TextColor="White" 
+                CornerRadius="32" FontSize="28" 
+                Grid.Row="5" Grid.Column="3"/>
+        
     </Grid>
 
 </ContentPage>

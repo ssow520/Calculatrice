@@ -33,14 +33,14 @@ namespace Calculatrice
                     Affichage.Text = nombre;
                 else
                     Affichage.Text += nombre;
-        }
+            }
 
             AjusterTaillePolice(Affichage.Text);
         }
 
         // Gestion du point décimal
         private void OnDecimalButton_Clicked(object sender, EventArgs e)
-            {
+        {
             if (nouvelleEntree)
             {
                 Affichage.Text = "0.";
@@ -62,9 +62,9 @@ namespace Calculatrice
 
         // Bouton Soustraction
         private void OnMinusButton_Clicked(object sender, EventArgs e)
-            {
+        {
             GererOperateur("−");
-            }
+        }
 
         // Bouton Multiplication
         private void OnMultiplyButton_Clicked(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace Calculatrice
                 OperationLabel.Text = $"{FormatNombre(premierNombre)} {operateur}";
 
                 nouvelleEntree = true;
-        }
+            }
         }
 
         // Bouton Égal (=)
@@ -202,7 +202,7 @@ namespace Calculatrice
 
         // Ajuster la taille de la police en fonction de la longueur du texte
         private void AjusterTaillePolice(string texte)
-            {
+        {
             int longueur = texte.Length;
 
             if (longueur <= 6)
@@ -213,7 +213,7 @@ namespace Calculatrice
                 Affichage.FontSize = 28;
             else
                 Affichage.FontSize = 20;
-            }
+        }
 
         // Formater le nombre pour l'affichage
         private string FormatNombre(double nombre)
